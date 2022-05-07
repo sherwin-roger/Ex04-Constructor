@@ -1,77 +1,82 @@
-# Ex05-Rec-JaggedArray
+# Ex04-Constructor
 ## Aim:
-To write a C# program to create a sample CPU usage on a network with 4 nodes using a jagged array.
-## Algorithm:
+ To write a C# program to calculate the salary of an employee by passing the name, designation, noofexperience, basic salary and insurance amount through constructor.
+ 
+ ## Algorithm:
  ### Step1: 
 Start
 ### Step2:
-Create a jagged array of 4arrays.
-```
-int[][] array = new int[4][];
-```
+Create a class and a constructor
 ### Step3:
-Give the sample CPU usage in the jagged array. 
+Get name, designation, noofexperience, basic salary and insurance amount from the User.
 ### Step4:
-Print the sample CPU usage in the jagged array. 
+call salary method in constructor to calculate salary.
 ### Step5:
+call display method to display the output.
+### Step6:
 stop
-
-
-## Program:
-```c#
-using System;
-
-class CPUactivity
-
+ ## Program:
+ ```c#
+ using System;
+namespace Sherwin
 {
-
-    public static void Main(String[] args)
-
+    public class exp4
     {
-
-        int[][] array = new int[4][];
-
-        array[0] = new int[3];
-
-        array[1] = new int[5];
-
-        array[2] = new int[6];
-
-        array[3] = new int[4];
-
-        for (int i = 0; i < 4; i++)
-
+        public string name, designation;
+        public int exp, bs, ins, hra = 0, ta = 0, s = 0;
+        void salary(int bs,int ins)
         {
-
-            for (int j = 0; j < array[i].Length; j++)
-
-            {
-                array[i][j] = i * j + 70;
-
-            }
-
+            hra = (20 * bs) / 100;
+            ta = (10 * bs) / 100;
+            s = bs + hra + ta-ins;
         }
-        for (int i = 0; i < array.Length; i++)
-
+        void display()
         {
-
-            for (int j = 0; j < array[i].Length; j++)
-
+            Console.WriteLine("Name of the employee is "+this.name+ " having "+this.exp+ " of experience, working as "+this.designation);
+            Console.WriteLine("Receives " + s + " of salary");
+        }
+        public exp4(string name, string designation, int exp, int bs, int ins)
+        {
+            this.name = name;
+            this.designation = designation;
+            this.exp = exp;
+            this.bs = bs;
+            this.ins = ins;
+            salary(bs,ins);
+            display();
+        }
+            
+    }
+    public class program
+    {   
+        static void Main(String[] args)
+        {
+            string nam, desig;
+            int exp, bs, ins,n;
+            Console.WriteLine("Enter no of employees: ");
+            n = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= n; i++)
             {
-
-                Console.WriteLine("CPU usage at node"+ i + " is "+ array[i][j]+" % ");
-
+                Console.WriteLine("Enter name of the employee: ");
+                nam = Console.ReadLine();
+                Console.WriteLine("Enter designation of the employee: ");
+                desig = Console.ReadLine();
+                Console.WriteLine("Enter years of experience of the employee: ");
+                exp = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter basic salary of the employee: ");
+                bs = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter insurance: ");
+                ins = Convert.ToInt32(Console.ReadLine());
+                exp4 emp = new exp4(nam,desig,exp,bs,ins);
             }
 
-            Console.WriteLine();
-
+            
         }
     }
 }
-```
+ ```
+ ## Output:
+ ![image](https://user-images.githubusercontent.com/75235488/166908617-03fdb99d-3bb3-4ec9-8ecb-dc40ab2c904a.png)
 
-## Output:
-![image](https://user-images.githubusercontent.com/75235488/167236657-a281d08b-cef0-416e-94bc-4bb2d0f1ece6.png)
-
-## Result:
-Thus,C# program to create a sample CPU usage on a network with 4 nodes using a jagged array is executed successfully.
+ ## Result:
+ Thus C# program to calculate the salary of an employee by passing the name, designation, noofexperience, basic salary and insurance amount through constructor is executed successfully.
